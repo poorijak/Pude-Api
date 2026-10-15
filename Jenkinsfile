@@ -78,7 +78,7 @@ pipeline {
                         docker pull ${DOCKER_REPO}:${env.IMAGE_TAG}
                         docker stop ${DEV_APP_NAME} || true
                         docker rm ${DEV_APP_NAME} || true
-                        docker run -d --name ${DEV_APP_NAME} -p ${DEV_HOST_PORT}:3000 --env-file ${REMOTE_APP_DIR}/.env -e TZ=Asia/Bangkok --restart unless-stopped ${DOCKER_REPO}:${env.IMAGE_TAG}
+                        docker run -d --name ${DEV_APP_NAME} -p ${DEV_HOST_PORT}:3001 --env-file ${REMOTE_APP_DIR}/.env -e TZ=Asia/Bangkok --restart unless-stopped ${DOCKER_REPO}:${env.IMAGE_TAG}
                         docker image prune -af || true
                         docker ps --filter name=${DEV_APP_NAME} --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}'
                     """
