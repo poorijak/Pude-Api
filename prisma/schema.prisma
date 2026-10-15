@@ -5,3 +5,41 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model User {
+  id                 String     @id @default(uuid()) @db.Uuid
+  name               String
+  surname            String
+  current_level      Int        @default(1)
+  current_stage      Int        @default(1)
+  current_streak     Int        @default(0)
+  longest_streak     Int        @default(0)
+  last_practice_date DateTime?  @db.Date
+  created            DateTime   @default(now())
+  updatedDate        DateTime   @updatedAt
+  accounts           Account[]
+  authCodes          AuthCode[]
+}
+
+model Account {
+  id                String   @id @default(uuid()) @db.Uuid
+  userId            String   @db.Uuid
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  provider          String
+  providerAccountId String
+  email             String?
+  created           DateTime @default(now())
+  updatedDate       DateTime @updatedAt
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model AuthCode {
+  codeHash  String   @id
+  userId    String   @db.Uuid
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+
+  @@index([expiresAt])
+}
