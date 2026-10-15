@@ -17,7 +17,7 @@ pipeline {
 
         SSH_CREDENTIALS_ID        = 'remote-deploy-pude-api'
         REMOTE_USER               = 'deploy'
-        REMOTE_HOST_IP            = '192.169.1.71'
+        REMOTE_HOST_IP            = '192.168.1.71'
         REMOTE_APP_DIR            = '/home/deploy/apps/pude-api'
     }
 
