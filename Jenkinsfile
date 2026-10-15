@@ -10,10 +10,10 @@ pipeline {
         DOCKER_REPO               = 'poorijak556/pude-api'
 
         DEV_APP_NAME              = 'pude-api'
-        DEV_HOST_PORT             = '3000'
+        DEV_HOST_PORT             = '3001'
 
         PROD_APP_NAME             = 'pude-api-prod'
-        PROD_HOST_PORT            = '3000'
+        PROD_HOST_PORT            = '3001'
 
         SSH_CREDENTIALS_ID        = 'remote-deploy-pude-api'
         REMOTE_USER               = 'deploy'
