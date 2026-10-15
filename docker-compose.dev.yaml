@@ -1,0 +1,65 @@
+networks:
+  borrow-api-network:
+    driver: bridge
+
+services:
+  pgdb:
+    image: postgres:16-alpine
+    container_name: pude-pgdb
+    restart: unless-stopped
+    ports:
+      - '5630:5432'
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      TZ: Asia/Bangkok
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}']
+      interval: 10s
+      timeout: 5s
+      retries: 20
+    networks:
+      - borrow-api-network
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    container_name: pude-api
+    working_dir: /app
+    ports:
+      - '3001:3000'
+      - '5555:5555'
+    volumes:
+      - ./src:/app/src
+      - ./prisma:/app/prisma
+      - /app/node_modules
+    depends_on:
+      pgdb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: 'postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@pgdb:5432/${POSTGRES_DB}?schema=public'
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      CHOKIDAR_USEPOLLING: 'true'
+      NODE_ENV: development
+      TZ: Asia/Bangkok
+    command: >
+      sh -c "
+        npx prisma generate &&
+        npx prisma migrate deploy &&
+        npm run dev
+      "
+    networks:
+      - borrow-api-network
+
+volumes:
+  pg_data:
