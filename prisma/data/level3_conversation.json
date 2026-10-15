@@ -1,0 +1,256 @@
+[
+  {
+    "id": "cv-l3-s1-01",
+    "level": 3,
+    "stage": 1,
+    "mode": "conversation",
+    "order": 1,
+    "question": "ชอบกาแฟหรือชาคะ",
+    "example_answers": ["ชอบกาแฟ", "ชอบชา", "ไม่ดื่มทั้งสองอย่าง"],
+    "expected_topic": "เครื่องดื่มที่ชอบ"
+  },
+  {
+    "id": "cv-l3-s1-02",
+    "level": 3,
+    "stage": 1,
+    "mode": "conversation",
+    "order": 2,
+    "question": "วันนี้อากาศร้อนไหมคะ",
+    "example_answers": ["ร้อนมาก", "ไม่ค่อยร้อน", "กำลังดี"],
+    "expected_topic": "สภาพอากาศวันนี้"
+  },
+  {
+    "id": "cv-l3-s1-03",
+    "level": 3,
+    "stage": 1,
+    "mode": "conversation",
+    "order": 3,
+    "question": "ชอบกินเผ็ดไหมคะ",
+    "example_answers": ["ชอบ", "ไม่ชอบ", "กินได้นิดหน่อย"],
+    "expected_topic": "ความชอบรสเผ็ด"
+  },
+  {
+    "id": "cv-l3-s1-04",
+    "level": 3,
+    "stage": 1,
+    "mode": "conversation",
+    "order": 4,
+    "question": "ชอบดูทีวีหรือฟังวิทยุคะ",
+    "example_answers": ["ดูทีวี", "ฟังวิทยุ", "ชอบทั้งสองอย่าง"],
+    "expected_topic": "สื่อที่ชอบ"
+  },
+  {
+    "id": "cv-l3-s1-05",
+    "level": 3,
+    "stage": 1,
+    "mode": "conversation",
+    "order": 5,
+    "question": "เมื่อคืนนอนหลับดีไหมคะ",
+    "example_answers": ["หลับดี", "ไม่ค่อยหลับ", "ตื่นบ่อย"],
+    "expected_topic": "คุณภาพการนอนเมื่อคืน"
+  },
+  {
+    "id": "cv-l3-s2-01",
+    "level": 3,
+    "stage": 2,
+    "mode": "conversation",
+    "order": 1,
+    "question": "คุณชื่ออะไรคะ",
+    "example_answers": ["ชื่อสมชาย", "ชื่อมาลี", "เรียกว่าป้าแดง"],
+    "expected_topic": "ชื่อหรือชื่อเล่นของตัวเอง"
+  },
+  {
+    "id": "cv-l3-s2-02",
+    "level": 3,
+    "stage": 2,
+    "mode": "conversation",
+    "order": 2,
+    "question": "บ้านเกิดอยู่จังหวัดไหนคะ",
+    "example_answers": ["เชียงใหม่", "กรุงเทพ", "ขอนแก่น"],
+    "expected_topic": "จังหวัดหรือบ้านเกิด"
+  },
+  {
+    "id": "cv-l3-s2-03",
+    "level": 3,
+    "stage": 2,
+    "mode": "conversation",
+    "order": 3,
+    "question": "มีลูกกี่คนคะ",
+    "example_answers": ["มีสองคน", "มีคนเดียว", "ไม่มีลูก"],
+    "expected_topic": "จำนวนลูกหรือครอบครัว"
+  },
+  {
+    "id": "cv-l3-s2-04",
+    "level": 3,
+    "stage": 2,
+    "mode": "conversation",
+    "order": 4,
+    "question": "เคยทำงานอะไรมาคะ",
+    "example_answers": ["เป็นครู", "ทำนา", "ค้าขาย"],
+    "expected_topic": "อาชีพที่เคยทำ"
+  },
+  {
+    "id": "cv-l3-s2-05",
+    "level": 3,
+    "stage": 2,
+    "mode": "conversation",
+    "order": 5,
+    "question": "ตอนนี้อยู่บ้านกับใครคะ",
+    "example_answers": ["อยู่กับลูก", "อยู่กับภรรยา", "อยู่คนเดียว"],
+    "expected_topic": "คนที่อาศัยอยู่ด้วย"
+  },
+  {
+    "id": "cv-l3-s3-01",
+    "level": 3,
+    "stage": 3,
+    "mode": "conversation",
+    "order": 1,
+    "question": "ปกติตื่นนอนกี่โมงคะ",
+    "example_answers": ["ตีห้า", "หกโมงเช้า", "เจ็ดโมง"],
+    "expected_topic": "เวลาตื่นนอน"
+  },
+  {
+    "id": "cv-l3-s3-02",
+    "level": 3,
+    "stage": 3,
+    "mode": "conversation",
+    "order": 2,
+    "question": "ตอนเช้าชอบทำอะไรคะ",
+    "example_answers": ["รดน้ำต้นไม้", "เดินออกกำลัง", "ใส่บาตร"],
+    "expected_topic": "กิจกรรมตอนเช้า"
+  },
+  {
+    "id": "cv-l3-s3-03",
+    "level": 3,
+    "stage": 3,
+    "mode": "conversation",
+    "order": 3,
+    "question": "มื้อเที่ยงวันนี้กินอะไรคะ",
+    "example_answers": ["ข้าวผัด", "ก๋วยเตี๋ยว", "ยังไม่ได้กิน"],
+    "expected_topic": "อาหารมื้อกลางวัน"
+  },
+  {
+    "id": "cv-l3-s3-04",
+    "level": 3,
+    "stage": 3,
+    "mode": "conversation",
+    "order": 4,
+    "question": "ตอนเย็นทำอะไรบ้างคะ",
+    "example_answers": ["ดูทีวี", "เล่นกับหลาน", "เดินเล่น"],
+    "expected_topic": "กิจกรรมตอนเย็น"
+  },
+  {
+    "id": "cv-l3-s3-05",
+    "level": 3,
+    "stage": 3,
+    "mode": "conversation",
+    "order": 5,
+    "question": "ก่อนนอนทำอะไรเป็นประจำคะ",
+    "example_answers": ["สวดมนต์", "อาบน้ำ", "ดูละคร"],
+    "expected_topic": "กิจวัตรก่อนนอน"
+  },
+  {
+    "id": "cv-l3-s4-01",
+    "level": 3,
+    "stage": 4,
+    "mode": "conversation",
+    "order": 1,
+    "question": "อาหารจานโปรดคืออะไรคะ",
+    "example_answers": ["ต้มยำกุ้ง", "ส้มตำ", "แกงเขียวหวาน"],
+    "expected_topic": "อาหารที่ชอบที่สุด"
+  },
+  {
+    "id": "cv-l3-s4-02",
+    "level": 3,
+    "stage": 4,
+    "mode": "conversation",
+    "order": 2,
+    "question": "ชอบเที่ยวทะเลหรือภูเขาคะ",
+    "example_answers": ["ชอบทะเล", "ชอบภูเขา", "ชอบอยู่บ้าน"],
+    "expected_topic": "สถานที่เที่ยวที่ชอบ"
+  },
+  {
+    "id": "cv-l3-s4-03",
+    "level": 3,
+    "stage": 4,
+    "mode": "conversation",
+    "order": 3,
+    "question": "ชอบฟังเพลงแบบไหนคะ",
+    "example_answers": ["เพลงลูกทุ่ง", "เพลงลูกกรุง", "เพลงสุนทราภรณ์"],
+    "expected_topic": "แนวเพลงที่ชอบ"
+  },
+  {
+    "id": "cv-l3-s4-04",
+    "level": 3,
+    "stage": 4,
+    "mode": "conversation",
+    "order": 4,
+    "question": "ผลไม้ที่ชอบที่สุดคืออะไรคะ",
+    "example_answers": ["ทุเรียน", "มะม่วง", "ส้ม"],
+    "expected_topic": "ผลไม้ที่ชอบ"
+  },
+  {
+    "id": "cv-l3-s4-05",
+    "level": 3,
+    "stage": 4,
+    "mode": "conversation",
+    "order": 5,
+    "question": "ชอบหน้าไหนที่สุดคะ หนาว ฝน หรือร้อน",
+    "example_answers": ["หน้าหนาว", "หน้าฝน", "หน้าร้อน"],
+    "expected_topic": "ฤดูที่ชอบและเหตุผล"
+  },
+  {
+    "id": "cv-l3-s5-01",
+    "level": 3,
+    "stage": 5,
+    "mode": "conversation",
+    "order": 1,
+    "question": "เล่าเรื่องวันหยุดที่ประทับใจให้ฟังหน่อย",
+    "example_answers": [
+      "ไปทะเลกับครอบครัว",
+      "ไปทำบุญที่วัด",
+      "ไปเที่ยวเชียงใหม่"
+    ],
+    "expected_topic": "เรื่องราววันหยุดหรือการเที่ยวที่ประทับใจ"
+  },
+  {
+    "id": "cv-l3-s5-02",
+    "level": 3,
+    "stage": 5,
+    "mode": "conversation",
+    "order": 2,
+    "question": "ตอนเด็กๆ ชอบเล่นอะไรคะ",
+    "example_answers": ["เล่นซ่อนหา", "กระโดดเชือก", "เล่นว่าว"],
+    "expected_topic": "การละเล่นหรือความทรงจำวัยเด็ก"
+  },
+  {
+    "id": "cv-l3-s5-03",
+    "level": 3,
+    "stage": 5,
+    "mode": "conversation",
+    "order": 3,
+    "question": "เล่าถึงคนในครอบครัวให้ฟังหน่อยค่ะ",
+    "example_answers": ["ลูกสาวทำงานธนาคาร", "มีหลานสองคน", "ภรรยาทำอาหารเก่ง"],
+    "expected_topic": "สมาชิกในครอบครัวและเรื่องของพวกเขา"
+  },
+  {
+    "id": "cv-l3-s5-04",
+    "level": 3,
+    "stage": 5,
+    "mode": "conversation",
+    "order": 4,
+    "question": "ถ้ามีเวลาว่าง อยากทำอะไรคะ",
+    "example_answers": ["อยากไปเที่ยว", "อยากปลูกต้นไม้", "อยากเจอเพื่อน"],
+    "expected_topic": "สิ่งที่อยากทำในเวลาว่าง"
+  },
+  {
+    "id": "cv-l3-s5-05",
+    "level": 3,
+    "stage": 5,
+    "mode": "conversation",
+    "order": 5,
+    "question": "สอนวิธีทำอาหารที่ถนัดให้หน่อยค่ะ",
+    "example_answers": ["ทอดไข่เจียว", "ต้มจืด", "ผัดกะเพรา"],
+    "expected_topic": "ขั้นตอนการทำอาหารที่ตัวเองถนัด"
+  }
+]

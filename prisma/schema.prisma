@@ -6,6 +6,13 @@ datasource db {
   provider = "postgresql"
 }
 
+enum QuestionMode {
+  PICTURE_NAMING
+  WORD_CLUE
+  PHRASE
+  CONVERSATION
+}
+
 model User {
   id                 String     @id @default(uuid()) @db.Uuid
   name               String
@@ -42,4 +49,34 @@ model AuthCode {
   expiresAt DateTime
 
   @@index([expiresAt])
+}
+
+model Question {
+  id              String       @id @default(uuid()) @db.Uuid
+  code            String       @unique
+  level           Int
+  stage           Int
+  mode            QuestionMode
+  sortOrder       Int
+  promptText      String?
+  targetText      String?
+  acceptedAnswers String[]
+  hintMeaning     String?
+  hintSyllable    String?
+  situation       String?
+  keyWords        String[]
+  exampleAnswers  String[]
+  expectedTopic   String?
+  imageUrl        String?
+  imageKey        String?
+  imageAlt        String?
+  imagePrompt     String?
+  isPretest       Boolean      @default(false)
+  isActive        Boolean      @default(true)
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+
+  @@unique([mode, level, stage, sortOrder])
+  @@index([mode, level, stage, isActive])
+  @@index([isPretest, isActive])
 }

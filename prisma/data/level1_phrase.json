@@ -1,0 +1,281 @@
+[
+  {
+    "id": "ph-l1-s1-01",
+    "level": 1,
+    "stage": 1,
+    "mode": "phrase",
+    "order": 1,
+    "phrase": "หิวข้าว",
+    "situation": "เมื่อรู้สึกหิว",
+    "key_words": ["หิว", "ข้าว"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai man holding his stomach, looking hungry, at a dining table, plain white background, no text"
+  },
+  {
+    "id": "ph-l1-s1-02",
+    "level": 1,
+    "stage": 1,
+    "mode": "phrase",
+    "order": 2,
+    "phrase": "ขอน้ำ",
+    "situation": "เมื่อรู้สึกกระหาย",
+    "key_words": ["ขอ", "น้ำ"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai woman reaching for a glass of water offered by a family member, plain white background, no text"
+  },
+  {
+    "id": "ph-l1-s1-03",
+    "level": 1,
+    "stage": 1,
+    "mode": "phrase",
+    "order": 3,
+    "phrase": "ปวดหัว",
+    "situation": "เมื่อรู้สึกไม่สบายที่ศีรษะ",
+    "key_words": ["ปวด", "หัว"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai man touching his forehead with a pained expression, plain white background, no text"
+  },
+  {
+    "id": "ph-l1-s1-04",
+    "level": 1,
+    "stage": 1,
+    "mode": "phrase",
+    "order": 4,
+    "phrase": "เข้าห้องน้ำ",
+    "situation": "เมื่ออยากไปห้องน้ำ",
+    "key_words": ["ห้องน้ำ"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai woman pointing toward a bathroom door, plain white background, no text"
+  },
+  {
+    "id": "ph-l1-s1-05",
+    "level": 1,
+    "stage": 1,
+    "mode": "phrase",
+    "order": 5,
+    "phrase": "ง่วงนอน",
+    "situation": "เมื่อรู้สึกอยากพักผ่อน",
+    "key_words": ["ง่วง"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai man yawning while sitting on a sofa, plain white background, no text"
+  },
+
+  {
+    "id": "ph-l1-s2-01",
+    "level": 1,
+    "stage": 2,
+    "mode": "phrase",
+    "order": 1,
+    "phrase": "ร้อน",
+    "situation": "เมื่ออากาศอบอ้าว",
+    "key_words": ["ร้อน"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai woman fanning herself with her hand, sweating, plain white background, no text"
+  },
+  {
+    "id": "ph-l1-s2-02",
+    "level": 1,
+    "stage": 2,
+    "mode": "phrase",
+    "order": 2,
+    "phrase": "หนาว",
+    "situation": "เมื่อรู้สึกเย็นจนตัวสั่น",
+    "key_words": ["หนาว"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai man shivering and hugging himself, plain white background, no text"
+  },
+  {
+    "id": "ph-l1-s2-03",
+    "level": 1,
+    "stage": 2,
+    "mode": "phrase",
+    "order": 3,
+    "phrase": "ขอบคุณ",
+    "situation": "เมื่อมีคนช่วยเหลือเรา",
+    "key_words": ["ขอบคุณ"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai woman doing a wai to a smiling caregiver, plain white background, no text"
+  },
+  {
+    "id": "ph-l1-s2-04",
+    "level": 1,
+    "stage": 2,
+    "mode": "phrase",
+    "order": 4,
+    "phrase": "ไม่เอา",
+    "situation": "เมื่อไม่ต้องการสิ่งที่ยื่นให้",
+    "key_words": ["ไม่", "เอา"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai man politely waving his hand to decline a plate of food, plain white background, no text"
+  },
+  {
+    "id": "ph-l1-s2-05",
+    "level": 1,
+    "stage": 2,
+    "mode": "phrase",
+    "order": 5,
+    "phrase": "เหนื่อย",
+    "situation": "เมื่อหมดแรง อยากพัก",
+    "key_words": ["เหนื่อย"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai woman sitting down and resting, looking tired, plain white background, no text"
+  },
+
+  {
+    "id": "ph-l1-s3-01",
+    "level": 1,
+    "stage": 3,
+    "mode": "phrase",
+    "order": 1,
+    "phrase": "อยากกินผลไม้",
+    "situation": "เมื่ออยากกินของว่าง",
+    "key_words": ["กิน", "ผลไม้"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai man looking at a plate of sliced fruit, plain white background, no text"
+  },
+  {
+    "id": "ph-l1-s3-02",
+    "level": 1,
+    "stage": 3,
+    "mode": "phrase",
+    "order": 2,
+    "phrase": "ขอน้ำหน่อย",
+    "situation": "ขอน้ำจากคนในบ้านอย่างสุภาพ",
+    "key_words": ["ขอ", "น้ำ"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai woman asking a family member for a glass of water at home, plain white background, no text"
+  },
+  {
+    "id": "ph-l1-s3-03",
+    "level": 1,
+    "stage": 3,
+    "mode": "phrase",
+    "order": 3,
+    "phrase": "ปวดท้องมาก",
+    "situation": "เมื่อรู้สึกไม่สบายที่ท้อง",
+    "key_words": ["ปวด", "ท้อง"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai man holding his stomach in discomfort, plain white background, no text"
+  },
+  {
+    "id": "ph-l1-s3-04",
+    "level": 1,
+    "stage": 3,
+    "mode": "phrase",
+    "order": 4,
+    "phrase": "อยากนอนแล้ว",
+    "situation": "เมื่อถึงเวลาเข้านอน",
+    "key_words": ["นอน"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai woman sitting on the edge of a bed at night, plain white background, no text"
+  },
+  {
+    "id": "ph-l1-s3-05",
+    "level": 1,
+    "stage": 3,
+    "mode": "phrase",
+    "order": 5,
+    "phrase": "เปิดพัดลมหน่อย",
+    "situation": "เมื่อรู้สึกร้อนในบ้าน",
+    "key_words": ["เปิด", "พัดลม"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai man pointing at an electric fan, plain white background, no text"
+  },
+
+  {
+    "id": "ph-l1-s4-01",
+    "level": 1,
+    "stage": 4,
+    "mode": "phrase",
+    "order": 1,
+    "phrase": "ช่วยด้วย",
+    "situation": "เมื่อต้องการความช่วยเหลือด่วน",
+    "key_words": ["ช่วย"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai woman raising her hand to call for help from a family member, plain white background, no text"
+  },
+  {
+    "id": "ph-l1-s4-02",
+    "level": 1,
+    "stage": 4,
+    "mode": "phrase",
+    "order": 2,
+    "phrase": "กินยาแล้ว",
+    "situation": "บอกคนดูแลว่ากินยาเรียบร้อย",
+    "key_words": ["กิน", "ยา", "แล้ว"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai man holding a pill box and a glass of water, plain white background, no text"
+  },
+  {
+    "id": "ph-l1-s4-03",
+    "level": 1,
+    "stage": 4,
+    "mode": "phrase",
+    "order": 3,
+    "phrase": "ไปหาหมอ",
+    "situation": "เมื่อรู้สึกไม่สบาย",
+    "key_words": ["ไป", "หมอ"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai woman with a family member arriving at a clinic, plain white background, no text"
+  },
+  {
+    "id": "ph-l1-s4-04",
+    "level": 1,
+    "stage": 4,
+    "mode": "phrase",
+    "order": 4,
+    "phrase": "ดีใจมาก",
+    "situation": "เมื่อมีเรื่องน่ายินดี",
+    "key_words": ["ดีใจ"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai man smiling happily, plain white background, no text"
+  },
+  {
+    "id": "ph-l1-s4-05",
+    "level": 1,
+    "stage": 4,
+    "mode": "phrase",
+    "order": 5,
+    "phrase": "คิดถึงหลาน",
+    "situation": "เมื่อไม่ได้เจอหลานนาน",
+    "key_words": ["คิดถึง", "หลาน"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai woman looking fondly at a framed photo of a child, plain white background, no text"
+  },
+
+  {
+    "id": "ph-l1-s5-01",
+    "level": 1,
+    "stage": 5,
+    "mode": "phrase",
+    "order": 1,
+    "phrase": "เปิดทีวีหน่อย",
+    "situation": "เมื่ออยากดูข่าวหรือละคร",
+    "key_words": ["เปิด", "ทีวี"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai man on a sofa pointing at a television, plain white background, no text"
+  },
+  {
+    "id": "ph-l1-s5-02",
+    "level": 1,
+    "stage": 5,
+    "mode": "phrase",
+    "order": 2,
+    "phrase": "ปิดไฟหน่อย",
+    "situation": "เมื่อจะเข้านอน",
+    "key_words": ["ปิด", "ไฟ"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai woman in bed pointing at a ceiling light, plain white background, no text"
+  },
+  {
+    "id": "ph-l1-s5-03",
+    "level": 1,
+    "stage": 5,
+    "mode": "phrase",
+    "order": 3,
+    "phrase": "ขอผ้าห่มหน่อย",
+    "situation": "เมื่อรู้สึกหนาวตอนนอน",
+    "key_words": ["ขอ", "ผ้าห่ม"],
+    "image_prompt": "Flat illustration in a soft blue palette of a caregiver handing a blanket to an older Thai man in bed, plain white background, no text"
+  },
+  {
+    "id": "ph-l1-s5-04",
+    "level": 1,
+    "stage": 5,
+    "mode": "phrase",
+    "order": 4,
+    "phrase": "อยากอาบน้ำ",
+    "situation": "เมื่อรู้สึกเหนียวตัว",
+    "key_words": ["อาบน้ำ"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai woman holding a towel near a bathroom, plain white background, no text"
+  },
+  {
+    "id": "ph-l1-s5-05",
+    "level": 1,
+    "stage": 5,
+    "mode": "phrase",
+    "order": 5,
+    "phrase": "ไปเดินเล่นกัน",
+    "situation": "ชวนคนในบ้านออกไปข้างนอก",
+    "key_words": ["ไป", "เดินเล่น"],
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai man walking in a park with a family member, plain white background, no text"
+  }
+]
