@@ -1,27 +1,29 @@
 import {
+  Body,
   Controller,
   Get,
   Header,
   HttpCode,
   HttpStatus,
   Post,
+  Query,
   Req,
-  UseGuards,
 } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
 import {
-  ApiBearerAuth,
-  ApiCookieAuth,
+  ApiBody,
   ApiOperation,
+  ApiQuery,
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import type { Request } from 'express';
 import { PracticeService } from './practice.service';
-import type { AuthRequest } from '../auth/auth.types';
+import { extractOptionalUserId } from '../auth/auth.types';
 import {
   CompletePretestResponseDto,
   PretestResponseDto,
 } from './dto/pretest-response.dto';
+import { CompletePretestDto } from './dto/complete-pretest.dto';
 
 @ApiTags('Practice')
 @Controller('practice')
@@ -29,12 +31,16 @@ export class PracticeController {
   constructor(private readonly practiceService: PracticeService) {}
 
   @Get('pretest')
-  @UseGuards(AuthGuard('jwt'))
-  @ApiBearerAuth('bearer')
   @ApiOperation({
     summary: 'ดึงแบบทดสอบก่อนเรียน (Pre-test)',
     description:
-      'ดึงรายการคำถาม Pre-test ทั้งหมด 15 ข้อ สำหรับผู้ใช้ที่ยังไม่เคยผ่านการประเมิน (หากผ่านแล้วจะตอบกลับเป็น 403 Forbidden)',
+      'ดึงรายการคำถาม Pre-test ทั้งหมด 15 ข้อ (ไม่ต้องใช้ Auth Token / สามารถระบุ userId เพื่อตรวจสอบสถานะ หรือไม่ระบุก็ได้)',
+  })
+  @ApiQuery({
+    name: 'userId',
+    required: false,
+    description: 'UUID ของผู้ใช้ (ไม่จำเป็นต้องระบุ)',
+    example: '11111111-1111-4111-8111-111111111111',
   })
   @ApiResponse({
     status: 200,
@@ -42,26 +48,29 @@ export class PracticeController {
     type: PretestResponseDto,
   })
   @ApiResponse({
-    status: 401,
-    description: 'ยังไม่ได้เข้าสู่ระบบ (Unauthorized)',
-  })
-  @ApiResponse({
     status: 403,
-    description: 'ผู้ใช้งานผ่านการประเมินแบบทดสอบก่อนเรียนแล้ว (Forbidden)',
+    description: 'กรณีระบุ userId และผู้ใช้งานผ่านการประเมินไปแล้ว (Forbidden)',
   })
   @Header('Cache-Control', 'no-store')
-  getPretest(@Req() req: AuthRequest): Promise<PretestResponseDto> {
-    return this.practiceService.getPretestQuestions(req.user.userId);
+  getPretest(
+    @Query('userId') queryUserId?: string,
+    @Req() req?: Request,
+  ): Promise<PretestResponseDto> {
+    const userId = extractOptionalUserId(req, queryUserId);
+    return this.practiceService.getPretestQuestions(userId);
   }
 
   @Post('pretest/complete')
-  @UseGuards(AuthGuard('jwt'))
-  @ApiBearerAuth('bearer')
-  @ApiCookieAuth('accessToken')
   @ApiOperation({
     summary: 'บันทึกสถานะผ่านแบบทดสอบก่อนเรียน',
     description:
-      'อัปเดตสถานะของ User เป็น is_pretest_passed: true เมื่อทำแบบทดสอบเสร็จสิ้น',
+      'อัปเดตสถานะของ User เป็น is_pretest_passed: true (สามารถส่ง userId ผ่าน Body/Query หรือไม่ส่งก็ได้)',
+  })
+  @ApiBody({ type: CompletePretestDto, required: false })
+  @ApiQuery({
+    name: 'userId',
+    required: false,
+    description: 'UUID ของผู้ใช้ (ไม่จำเป็นต้องระบุ)',
   })
   @ApiResponse({
     status: 200,
@@ -69,17 +78,16 @@ export class PracticeController {
     type: CompletePretestResponseDto,
   })
   @ApiResponse({
-    status: 401,
-    description: 'ยังไม่ได้เข้าสู่ระบบ (Unauthorized)',
-  })
-  @ApiResponse({
     status: 403,
-    description: 'ผู้ใช้งานผ่านการประเมินไปแล้ว',
+    description: 'กรณีผู้ใช้งานผ่านการประเมินไปแล้ว',
   })
   @HttpCode(HttpStatus.OK)
   completePretest(
-    @Req() req: AuthRequest,
+    @Body() body?: CompletePretestDto,
+    @Query('userId') queryUserId?: string,
+    @Req() req?: Request,
   ): Promise<CompletePretestResponseDto> {
-    return this.practiceService.completePretest(req.user.userId);
+    const userId = extractOptionalUserId(req, body?.userId || queryUserId);
+    return this.practiceService.completePretest(userId);
   }
 }

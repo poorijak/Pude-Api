@@ -12,9 +12,7 @@ import {
   UnauthorizedException,
   UseGuards,
 } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
 import {
-  ApiBearerAuth,
   ApiBody,
   ApiCookieAuth,
   ApiOperation,
@@ -27,7 +25,11 @@ import type { Request, Response } from 'express';
 import { AuthService } from './auth.service';
 import { frontendOrigin, safeReturnTo } from './auth.config';
 import { GoogleAuthGuard } from './guards/google-auth.guard';
-import { readCookie, type AuthRequest, type GoogleRequest } from './auth.types';
+import {
+  extractOptionalUserId,
+  readCookie,
+  type GoogleRequest,
+} from './auth.types';
 import { ExchangeCodeDto } from './dto/exchange-code.dto';
 import { GenTokenDto } from './dto/gen-token.dto';
 import { MockUserDto } from './data/mock-users.data';
@@ -239,26 +241,28 @@ export class AuthController {
   }
 
   @Get('me')
-  @UseGuards(AuthGuard('jwt'))
-  @ApiBearerAuth('bearer')
-  @ApiCookieAuth('accessToken')
   @ApiOperation({
-    summary: 'ดึงข้อมูลโปรไฟล์ของผู้ใช้ปัจจุบัน',
+    summary: 'ดึงข้อมูลโปรไฟล์ของผู้ใช้ (ไม่ต้องมี Token ก็ได้)',
     description:
-      'ดึงข้อมูล User ปัจจุบันจาก JWT Token รวมถึงสถานะ is_pretest_passed',
+      'ดึงข้อมูล User ปัจจุบันจาก Cookie/Bearer Token (ถ้ามี) หรือระบุ ?userId=... หรือคืนค่า User เริ่มต้น',
+  })
+  @ApiQuery({
+    name: 'userId',
+    required: false,
+    description: 'UUID ของผู้ใช้ (ไม่จำเป็นต้องระบุ)',
   })
   @ApiResponse({
     status: 200,
     description: 'ดึงข้อมูลโปรไฟล์สำเร็จ',
     type: UserEntity,
   })
-  @ApiResponse({
-    status: 401,
-    description: 'ไม่ได้เข้าสู่ระบบหรือ Token ไม่ถูกต้อง',
-  })
   @Header('Cache-Control', 'no-store')
-  getMe(@Req() req: AuthRequest): Promise<UserEntity> {
-    return this.authService.getMe(req.user.userId);
+  getMe(
+    @Query('userId') queryUserId?: string,
+    @Req() req?: Request,
+  ): Promise<UserEntity> {
+    const userId = extractOptionalUserId(req, queryUserId);
+    return this.authService.getMe(userId);
   }
 
   @Get('refresh')

@@ -1,37 +1,31 @@
-import {
-  ForbiddenException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { ForbiddenException, Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class PracticeService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async getPretestQuestions(userId: string) {
-    const user = await this.prisma.user.findUnique({
-      where: { id: userId },
-      select: {
-        id: true,
-        name: true,
-        surname: true,
-        is_pretest_passed: true,
-        current_level: true,
-        current_stage: true,
-      },
-    });
-
-    if (!user) {
-      throw new NotFoundException('User not found');
-    }
-
-    if (user.is_pretest_passed) {
-      throw new ForbiddenException({
-        statusCode: 403,
-        error: 'PRETEST_ALREADY_PASSED',
-        message: 'ผู้ใช้งานผ่านการประเมินแบบทดสอบก่อนเรียน (Pre-test) แล้ว',
+  async getPretestQuestions(userId?: string) {
+    if (userId) {
+      const user = await this.prisma.user.findUnique({
+        where: { id: userId },
+        select: {
+          id: true,
+          name: true,
+          surname: true,
+          is_pretest_passed: true,
+          current_level: true,
+          current_stage: true,
+        },
       });
+
+      if (user?.is_pretest_passed) {
+        throw new ForbiddenException({
+          statusCode: 403,
+          error: 'PRETEST_ALREADY_PASSED',
+          message: 'ผู้ใช้งานผ่านการประเมินแบบทดสอบก่อนเรียน (Pre-test) แล้ว',
+        });
+      }
     }
 
     const questions = await this.prisma.question.findMany({
@@ -68,20 +62,29 @@ export class PracticeService {
     };
   }
 
-  async completePretest(userId: string) {
+  async completePretest(userId?: string) {
+    let targetId = userId;
+    if (!targetId) {
+      const firstUser = await this.prisma.user.findFirst();
+      if (firstUser) {
+        targetId = firstUser.id;
+      } else {
+        const newUser = await this.prisma.user.create({
+          data: { name: 'สมชาย', surname: 'ใจดี' },
+        });
+        targetId = newUser.id;
+      }
+    }
+
     const user = await this.prisma.user.findUnique({
-      where: { id: userId },
+      where: { id: targetId },
       select: {
         id: true,
         is_pretest_passed: true,
       },
     });
 
-    if (!user) {
-      throw new NotFoundException('User not found');
-    }
-
-    if (user.is_pretest_passed) {
+    if (user?.is_pretest_passed) {
       throw new ForbiddenException({
         statusCode: 403,
         error: 'PRETEST_ALREADY_PASSED',
@@ -90,7 +93,7 @@ export class PracticeService {
     }
 
     const updatedUser = await this.prisma.user.update({
-      where: { id: userId },
+      where: { id: targetId },
       data: { is_pretest_passed: true },
       select: {
         id: true,
