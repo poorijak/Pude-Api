@@ -53,6 +53,11 @@ export function extractOptionalUserId(
     return headerUserId.trim();
   }
 
+  const cookieUserId = readCookie(req, 'userId');
+  if (cookieUserId && cookieUserId.trim()) {
+    return cookieUserId.trim();
+  }
+
   try {
     const authHeader = req.headers['authorization'];
     let token = authHeader?.startsWith('Bearer ')

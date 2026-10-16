@@ -111,7 +111,7 @@ export class AuthService {
         { expiresIn: REFRESH_TOKEN_SECONDS },
       ),
     ]);
-    return { accessToken, refreshToken };
+    return { accessToken, refreshToken, userId };
   }
 
   async refreshAccessToken(token: string) {

@@ -68,6 +68,7 @@ export class AuthController {
     const code = await this.authService.createOneTimeCode(userId);
     const target = new URL('/api/auth/callback', frontendOrigin());
     target.searchParams.set('code', code);
+    target.searchParams.set('userId', userId);
     target.searchParams.set('return_to', safeReturnTo(req.oauthReturnTo));
     res.redirect(target.toString());
   }
@@ -105,6 +106,13 @@ export class AuthController {
       tokens.refreshToken,
       this.authService.getCookieOptions('refresh'),
     );
+    res.cookie('userId', tokens.userId, {
+      httpOnly: false,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      path: '/',
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+    });
     return tokens;
   }
 
@@ -141,6 +149,13 @@ export class AuthController {
       result.refreshToken,
       this.authService.getCookieOptions('refresh'),
     );
+    res.cookie('userId', result.userId, {
+      httpOnly: false,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      path: '/',
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+    });
     return result;
   }
 
@@ -181,6 +196,13 @@ export class AuthController {
       result.refreshToken,
       this.authService.getCookieOptions('refresh'),
     );
+    res.cookie('userId', result.userId, {
+      httpOnly: false,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      path: '/',
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+    });
     return result;
   }
 
@@ -234,9 +256,17 @@ export class AuthController {
       result.refreshToken,
       this.authService.getCookieOptions('refresh'),
     );
+    res.cookie('userId', result.userId, {
+      httpOnly: false,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      path: '/',
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+    });
 
     const redirectPath = safeReturnTo(returnTo);
     const target = new URL(redirectPath, frontendOrigin());
+    target.searchParams.set('userId', result.userId);
     res.redirect(target.toString());
   }
 
@@ -300,7 +330,7 @@ export class AuthController {
   @HttpCode(200)
   @ApiOperation({
     summary: 'ออกจากระบบ (Sign out)',
-    description: 'ล้าง accessToken และ refreshToken ใน Cookie',
+    description: 'ล้าง accessToken, refreshToken และ userId ใน Cookie',
   })
   @ApiResponse({
     status: 200,
@@ -313,6 +343,7 @@ export class AuthController {
       delete options.maxAge;
       res.clearCookie(`${type}Token`, options);
     }
+    res.clearCookie('userId', { path: '/' });
     return { success: true };
   }
 }

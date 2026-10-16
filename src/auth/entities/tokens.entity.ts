@@ -12,6 +12,12 @@ export class AuthTokensEntity {
     example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
   })
   refreshToken: string;
+
+  @ApiProperty({
+    description: 'User ID of the logged in user',
+    example: '11111111-1111-4111-8111-111111111111',
+  })
+  userId: string;
 }
 
 export class SuccessResponseDto {
@@ -24,10 +30,4 @@ export class SignoutResponseDto {
   success: boolean;
 }
 
-export class GenTokenResponseDto extends AuthTokensEntity {
-  @ApiProperty({
-    description: 'User UUID for which tokens were generated',
-    example: '60fa0545-8046-4408-833a-5506d0022a71',
-  })
-  userId: string;
-}
+export class GenTokenResponseDto extends AuthTokensEntity {}
