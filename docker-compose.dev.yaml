@@ -1,5 +1,5 @@
 networks:
-  borrow-api-network:
+  pude-api-network:
     driver: bridge
 
 services:
@@ -17,12 +17,12 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data
     healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}']
+      test: [ 'CMD-SHELL', 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}' ]
       interval: 10s
       timeout: 5s
       retries: 20
     networks:
-      - borrow-api-network
+      - pude-api-network
 
   api:
     build:
@@ -55,7 +55,7 @@ services:
         npm run dev
       "
     networks:
-      - borrow-api-network
+      - pude-api-network
 
 volumes:
   pg_data:

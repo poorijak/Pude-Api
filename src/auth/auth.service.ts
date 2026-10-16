@@ -1,4 +1,8 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Prisma } from '@prisma/client';
 import { createHash, randomBytes } from 'node:crypto';
@@ -11,6 +15,7 @@ import {
   JWT_ISSUER,
 } from './auth.config';
 import type { GoogleUser, TokenPayload } from './auth.types';
+import { MOCK_USERS } from './data/mock-users.data';
 
 @Injectable()
 export class AuthService {
@@ -136,6 +141,70 @@ export class AuthService {
     const user = await this.prisma.user.findUnique({ where: { id: userId } });
     if (!user) throw new UnauthorizedException('User not found');
     return user;
+  }
+
+  getMockUsers() {
+    return MOCK_USERS;
+  }
+
+  async generateTokens(userId?: string) {
+    let targetUser: { id: string };
+
+    if (userId && typeof userId === 'string' && userId.trim() !== '') {
+      const cleanUserId = userId.trim();
+      const uuidRegex =
+        /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+      if (!uuidRegex.test(cleanUserId)) {
+        throw new BadRequestException(
+          `Invalid userId format. Must be a valid UUID, received: '${cleanUserId}'`,
+        );
+      }
+
+      const existing = await this.prisma.user.findUnique({
+        where: { id: cleanUserId },
+      });
+
+      if (existing) {
+        targetUser = existing;
+      } else {
+        targetUser = await this.prisma.user.create({
+          data: {
+            id: cleanUserId,
+            name: 'Dev',
+            surname: 'Tester',
+          },
+        });
+      }
+    } else {
+      const firstUser = await this.prisma.user.findFirst();
+      if (firstUser) {
+        targetUser = firstUser;
+      } else {
+        targetUser = await this.prisma.user.create({
+          data: {
+            name: 'Dev',
+            surname: 'Tester',
+          },
+        });
+      }
+    }
+
+    const [accessToken, refreshToken] = await Promise.all([
+      this.jwt.signAsync(
+        { sub: targetUser.id, type: 'access' },
+        { expiresIn: ACCESS_TOKEN_SECONDS },
+      ),
+      this.jwt.signAsync(
+        { sub: targetUser.id, type: 'refresh' },
+        { expiresIn: REFRESH_TOKEN_SECONDS },
+      ),
+    ]);
+
+    return {
+      accessToken,
+      refreshToken,
+      userId: targetUser.id,
+    };
   }
 
   getCookieOptions(type: 'access' | 'refresh'): CookieOptions {

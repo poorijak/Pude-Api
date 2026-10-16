@@ -54,7 +54,6 @@
     "key_words": ["ง่วง"],
     "image_prompt": "Flat illustration in a soft blue palette of an older Thai man yawning while sitting on a sofa, plain white background, no text"
   },
-
   {
     "id": "ph-l1-s2-01",
     "level": 1,
@@ -97,7 +96,8 @@
     "phrase": "ไม่เอา",
     "situation": "เมื่อไม่ต้องการสิ่งที่ยื่นให้",
     "key_words": ["ไม่", "เอา"],
-    "image_prompt": "Flat illustration in a soft blue palette of an older Thai man politely waving his hand to decline a plate of food, plain white background, no text"
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai man politely waving his hand to decline a plate of food, plain white background, no text",
+    "is_pretest": true
   },
   {
     "id": "ph-l1-s2-05",
@@ -110,7 +110,6 @@
     "key_words": ["เหนื่อย"],
     "image_prompt": "Flat illustration in a soft blue palette of an older Thai woman sitting down and resting, looking tired, plain white background, no text"
   },
-
   {
     "id": "ph-l1-s3-01",
     "level": 1,
@@ -164,9 +163,9 @@
     "phrase": "เปิดพัดลมหน่อย",
     "situation": "เมื่อรู้สึกร้อนในบ้าน",
     "key_words": ["เปิด", "พัดลม"],
-    "image_prompt": "Flat illustration in a soft blue palette of an older Thai man pointing at an electric fan, plain white background, no text"
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai man pointing at an electric fan, plain white background, no text",
+    "is_pretest": true
   },
-
   {
     "id": "ph-l1-s4-01",
     "level": 1,
@@ -222,7 +221,6 @@
     "key_words": ["คิดถึง", "หลาน"],
     "image_prompt": "Flat illustration in a soft blue palette of an older Thai woman looking fondly at a framed photo of a child, plain white background, no text"
   },
-
   {
     "id": "ph-l1-s5-01",
     "level": 1,

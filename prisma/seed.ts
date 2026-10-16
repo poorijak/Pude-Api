@@ -13,6 +13,7 @@ interface BaseSeedRow {
   stage: number;
   mode: SourceMode;
   order: number;
+  is_pretest?: boolean;
 }
 
 interface PictureNamingSeedRow extends BaseSeedRow {
@@ -111,15 +112,26 @@ const availableImageCodes = new Set([
 ]);
 
 const pretestCodes = new Set([
-  'pn-l1-s1-01',
-  'pn-l1-s1-03',
-  'pn-l1-s2-01',
   'pn-l1-s2-04',
-  'pn-l1-s3-01',
-  'pn-l1-s3-04',
-  'pn-l1-s4-02',
-  'pn-l1-s5-02',
+  'pn-l1-s3-03',
+  'pn-l2-s2-07',
+  'pn-l2-s1-10',
+  'pn-l1-s4-08',
+  'ph-l1-s2-04',
+  'ph-l1-s3-05',
+  'ph-l2-s5-01',
+  'ph-l3-s2-03',
+  'wc-l2-s1-09',
+  'wc-l2-s3-03',
+  'wc-l2-s3-08',
+  'cv-l3-s5-04',
+  'cv-l3-s2-02',
+  'cv-l3-s1-05',
 ]);
+
+function isPretest(row: SeedRow): boolean {
+  return Boolean(row.is_pretest) || pretestCodes.has(row.id);
+}
 
 function loadRows(): SeedRow[] {
   return DATA_FILES.flatMap((fileName) => {
@@ -160,10 +172,6 @@ function validateRows(rows: SeedRow[]) {
     ) {
       throw new Error(`${row.id} contains a keyword outside its phrase`);
     }
-
-    if (pretestCodes.has(row.id) && !availableImageCodes.has(row.id)) {
-      throw new Error(`Pretest question ${row.id} has no R2 image`);
-    }
   }
 
   if (rows.length !== 350) {
@@ -191,7 +199,9 @@ function requiresImage(row: SeedRow) {
 }
 
 function canSeed(row: SeedRow) {
-  return !requiresImage(row) || getImageData(row).imageKey !== null;
+  return (
+    isPretest(row) || !requiresImage(row) || getImageData(row).imageKey !== null
+  );
 }
 
 function mapQuestion(row: SeedRow) {
@@ -205,7 +215,7 @@ function mapQuestion(row: SeedRow) {
     imageUrl: image.imageUrl,
     imageKey: image.imageKey,
     imageAlt: image.imageAlt,
-    isPretest: pretestCodes.has(row.id),
+    isPretest: isPretest(row),
     isActive: true,
   };
 
@@ -301,6 +311,93 @@ async function main() {
     console.log(
       `Seeded ${seedableRows.length} questions and excluded ${excludedCodes.length} image-dependent questions without an R2 image key. ${pretestCodes.size} questions are pretest.`,
     );
+
+    const mockUsers = [
+      {
+        id: '11111111-1111-4111-8111-111111111111',
+        name: 'สมชาย',
+        surname: 'ใจดี',
+        email: 'somchai.pretest@example.com',
+        is_pretest_passed: false,
+        current_level: 1,
+        current_stage: 1,
+        current_streak: 0,
+        longest_streak: 0,
+        last_practice_date: null,
+      },
+      {
+        id: '22222222-2222-4222-8222-222222222222',
+        name: 'สมหญิง',
+        surname: 'รักเรียน',
+        email: 'somying.passed@example.com',
+        is_pretest_passed: true,
+        current_level: 2,
+        current_stage: 3,
+        current_streak: 5,
+        longest_streak: 10,
+        last_practice_date: new Date(),
+      },
+      {
+        id: '33333333-3333-4333-8333-333333333333',
+        name: 'มานะ',
+        surname: 'อดทน',
+        email: 'mana.advanced@example.com',
+        is_pretest_passed: true,
+        current_level: 3,
+        current_stage: 5,
+        current_streak: 21,
+        longest_streak: 30,
+        last_practice_date: new Date(),
+      },
+    ];
+
+    for (const mock of mockUsers) {
+      await prisma.user.upsert({
+        where: { id: mock.id },
+        create: {
+          id: mock.id,
+          name: mock.name,
+          surname: mock.surname,
+          is_pretest_passed: mock.is_pretest_passed,
+          current_level: mock.current_level,
+          current_stage: mock.current_stage,
+          current_streak: mock.current_streak,
+          longest_streak: mock.longest_streak,
+          last_practice_date: mock.last_practice_date,
+        },
+        update: {
+          name: mock.name,
+          surname: mock.surname,
+          is_pretest_passed: mock.is_pretest_passed,
+          current_level: mock.current_level,
+          current_stage: mock.current_stage,
+          current_streak: mock.current_streak,
+          longest_streak: mock.longest_streak,
+          last_practice_date: mock.last_practice_date,
+        },
+      });
+
+      await prisma.account.upsert({
+        where: {
+          provider_providerAccountId: {
+            provider: 'mock',
+            providerAccountId: `mock-${mock.id}`,
+          },
+        },
+        create: {
+          userId: mock.id,
+          provider: 'mock',
+          providerAccountId: `mock-${mock.id}`,
+          email: mock.email,
+        },
+        update: {
+          userId: mock.id,
+          email: mock.email,
+        },
+      });
+    }
+
+    console.log(`Seeded ${mockUsers.length} mock users.`);
   } finally {
     await prisma.$disconnect();
     await pool.end();

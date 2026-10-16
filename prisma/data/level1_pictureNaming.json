@@ -119,7 +119,6 @@
     "hint_syllable": "ต...",
     "image_prompt": "Flat illustration in a soft blue palette of a single human eye, plain white background, no text"
   },
-
   {
     "id": "pn-l1-s2-01",
     "level": 1,
@@ -166,7 +165,8 @@
     "accepted_answers": ["จาน"],
     "hint_meaning": "ภาชนะแบน ใส่ข้าวไว้กิน",
     "hint_syllable": "จ...",
-    "image_prompt": "Flat illustration in a soft blue palette of an empty round dinner plate, plain white background, no text"
+    "image_prompt": "Flat illustration in a soft blue palette of an empty round dinner plate, plain white background, no text",
+    "is_pretest": true
   },
   {
     "id": "pn-l1-s2-05",
@@ -240,7 +240,6 @@
     "hint_syllable": "ม...",
     "image_prompt": "Flat illustration in a soft blue palette of a pig, plain white background, no text"
   },
-
   {
     "id": "pn-l1-s3-01",
     "level": 1,
@@ -275,7 +274,8 @@
     "accepted_answers": ["รองเท้า"],
     "hint_meaning": "สวมใส่ก่อนออกจากบ้าน",
     "hint_syllable": "รอง",
-    "image_prompt": "Flat illustration in a soft blue palette of a pair of simple shoes, plain white background, no text"
+    "image_prompt": "Flat illustration in a soft blue palette of a pair of simple shoes, plain white background, no text",
+    "is_pretest": true
   },
   {
     "id": "pn-l1-s3-04",
@@ -361,7 +361,6 @@
     "hint_syllable": "กระ",
     "image_prompt": "Flat illustration in a soft blue palette of a simple handbag, plain white background, no text"
   },
-
   {
     "id": "pn-l1-s4-01",
     "level": 1,
@@ -456,7 +455,8 @@
     "accepted_answers": ["กุญแจ", "ลูกกุญแจ"],
     "hint_meaning": "ใช้ไขล็อกประตู",
     "hint_syllable": "กุญ",
-    "image_prompt": "Flat illustration in a soft blue palette of a single metal key, plain white background, no text"
+    "image_prompt": "Flat illustration in a soft blue palette of a single metal key, plain white background, no text",
+    "is_pretest": true
   },
   {
     "id": "pn-l1-s4-09",
@@ -482,7 +482,6 @@
     "hint_syllable": "มะ",
     "image_prompt": "Flat illustration in a soft blue palette of a whole green coconut, plain white background, no text"
   },
-
   {
     "id": "pn-l1-s5-01",
     "level": 1,

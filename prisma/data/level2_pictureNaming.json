@@ -117,9 +117,9 @@
     "accepted_answers": ["เข็มขัด"],
     "hint_meaning": "รัดเอวไม่ให้กางเกงหลุด",
     "hint_syllable": "เข็ม",
-    "image_prompt": "Flat illustration in a soft blue palette of a leather belt with a buckle, plain white background, no text"
+    "image_prompt": "Flat illustration in a soft blue palette of a leather belt with a buckle, plain white background, no text",
+    "is_pretest": true
   },
-
   {
     "id": "pn-l2-s2-01",
     "level": 2,
@@ -202,7 +202,8 @@
     "accepted_answers": ["ตำรวจ"],
     "hint_meaning": "ดูแลความปลอดภัย จับคนร้าย",
     "hint_syllable": "ตำ",
-    "image_prompt": "Flat illustration in a soft blue palette of a Thai police officer in uniform standing, plain white background, no text"
+    "image_prompt": "Flat illustration in a soft blue palette of a Thai police officer in uniform standing, plain white background, no text",
+    "is_pretest": true
   },
   {
     "id": "pn-l2-s2-08",
@@ -240,7 +241,6 @@
     "hint_syllable": "แท็ก",
     "image_prompt": "Flat illustration in a soft blue palette of a Bangkok taxi car, side view, plain white background, no text"
   },
-
   {
     "id": "pn-l2-s3-01",
     "level": 2,
@@ -361,7 +361,6 @@
     "hint_syllable": "หัว",
     "image_prompt": "Flat illustration in a soft blue palette of an older Thai man laughing happily, plain white background, no text"
   },
-
   {
     "id": "pn-l2-s4-01",
     "level": 2,
@@ -482,7 +481,6 @@
     "hint_syllable": "หวี",
     "image_prompt": "Flat illustration in a soft blue palette of an older Thai woman combing her hair in front of a mirror, plain white background, no text"
   },
-
   {
     "id": "pn-l2-s5-01",
     "level": 2,

@@ -228,7 +228,8 @@
     "phrase": "ห้องน้ำอยู่ตรงไหนคะ",
     "situation": "ถามทางเมื่ออยู่นอกบ้าน",
     "key_words": ["ห้องน้ำ", "ตรงไหน"],
-    "image_prompt": "Flat illustration in a soft blue palette of an older Thai woman asking a staff member for directions in a shopping mall, plain white background, no text"
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai woman asking a staff member for directions in a shopping mall, plain white background, no text",
+    "is_pretest": true
   },
   {
     "id": "ph-l2-s5-02",

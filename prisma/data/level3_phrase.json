@@ -85,7 +85,8 @@
     "phrase": "ขอนั่งตรงนี้ได้ไหมครับ",
     "situation": "ขออนุญาตนั่งที่ว่าง",
     "key_words": ["นั่ง", "ตรงนี้"],
-    "image_prompt": "Flat illustration in a soft blue palette of an older Thai man asking politely to sit on an empty bench seat, plain white background, no text"
+    "image_prompt": "Flat illustration in a soft blue palette of an older Thai man asking politely to sit on an empty bench seat, plain white background, no text",
+    "is_pretest": true
   },
   {
     "id": "ph-l3-s2-04",

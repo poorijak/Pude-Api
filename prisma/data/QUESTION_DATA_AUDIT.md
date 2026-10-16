@@ -45,18 +45,22 @@ questions. The other 200 image-dependent questions are absent from the table.
 `R2_PUBLIC_BASE_URL` can override the current public R2 origin without changing
 object keys.
 
-## Initial pretest selection
+## Pretest selection
 
-The initial pretest contains eight active, image-backed questions:
+The pretest contains 15 questions across all practice modes:
 
-- `pn-l1-s1-01` — ข้าว
-- `pn-l1-s1-03` — แมว
-- `pn-l1-s2-01` — เท้า
-- `pn-l1-s2-04` — จาน
-- `pn-l1-s3-01` — ตู้เย็น
-- `pn-l1-s3-04` — แว่นตา
-- `pn-l1-s4-02` — เก้าอี้
-- `pn-l1-s5-02` — ร่ม
-
-The database check constraint prevents an inactive question from being marked
-as a pretest question.
+- `pn-l1-s2-04` — จาน (Picture Naming L1)
+- `pn-l1-s3-03` — รองเท้า (Picture Naming L1)
+- `pn-l1-s4-08` — กุญแจ (Picture Naming L1)
+- `pn-l2-s1-10` — เข็มขัด (Picture Naming L2)
+- `pn-l2-s2-07` — ตำรวจ (Picture Naming L2)
+- `ph-l1-s2-04` — ไม่เอา (Phrase L1)
+- `ph-l1-s3-05` — เปิดพัดลมหน่อย (Phrase L1)
+- `ph-l2-s5-01` — ห้องน้ำอยู่ตรงไหนคะ (Phrase L2)
+- `ph-l3-s2-03` — ขอนั่งตรงนี้ได้ไหมครับ (Phrase L3)
+- `wc-l2-s1-09` — ไม้ถูพื้น (Word Clue L2)
+- `wc-l2-s3-03` — โรงพยาบาล (Word Clue L2)
+- `wc-l2-s3-08` — ไปรษณีย์ (Word Clue L2)
+- `cv-l3-s1-05` — เมื่อคืนนอนหลับดีไหมคะ (Conversation L3)
+- `cv-l3-s2-02` — บ้านเกิดอยู่จังหวัดไหนคะ (Conversation L3)
+- `cv-l3-s5-04` — ถ้ามีเวลาว่าง อยากทำอะไรคะ (Conversation L3)

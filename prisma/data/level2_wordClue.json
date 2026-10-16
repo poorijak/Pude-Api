@@ -105,7 +105,8 @@
     "target_word": "ไม้ถูพื้น",
     "accepted_answers": ["ไม้ถูพื้น", "ไม้ม็อบ"],
     "hint_meaning": "จุ่มถังแล้วบิดให้หมาด",
-    "hint_syllable": "ไม้"
+    "hint_syllable": "ไม้",
+    "is_pretest": true
   },
   {
     "id": "wc-l2-s1-10",
@@ -273,7 +274,8 @@
     "target_word": "โรงพยาบาล",
     "accepted_answers": ["โรงพยาบาล", "โรงหมอ"],
     "hint_meaning": "มีห้องฉุกเฉิน มีคนไข้เยอะ",
-    "hint_syllable": "โรง"
+    "hint_syllable": "โรง",
+    "is_pretest": true
   },
   {
     "id": "wc-l2-s3-04",
@@ -333,7 +335,8 @@
     "target_word": "ไปรษณีย์",
     "accepted_answers": ["ไปรษณีย์", "ที่ทำการไปรษณีย์"],
     "hint_meaning": "ซื้อแสตมป์ได้ที่นี่",
-    "hint_syllable": "ไป"
+    "hint_syllable": "ไป",
+    "is_pretest": true
   },
   {
     "id": "wc-l2-s3-09",
